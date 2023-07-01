@@ -2,15 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import './Main.scss'
 
-const Main = () => {
-  
-    let products = [{
-        id: 0,
-        name: '',
-        color: '',
-        category: '',
-        price: 0
-    }]
+const Main = ( props ) => {
+
+    const { list, onAddProduct } = props;
 
     const [ object,setObject ] = useState({});
 
@@ -20,12 +14,10 @@ const Main = () => {
         setObject(newObject);
     }
 
-    const [ list,setList ] = useState([]);
-
     const handleSubmit = (event) => {
         event.preventDefault();
-        setList([...list,object]);
-        products = list;
+        onAddProduct(object);
+        //console.log(list);
     }
 
   return (
@@ -38,9 +30,7 @@ const Main = () => {
                 <h2>Product List</h2>
                 <button>Add</button>
                 <ul>
-                    <li>
-                        <span>{ products[0].name }</span>
-                    </li>
+                    { list.map((x,index) => ( <li key={index}>{ x.name }</li> )) }
                 </ul>
             </article>
             <section>
