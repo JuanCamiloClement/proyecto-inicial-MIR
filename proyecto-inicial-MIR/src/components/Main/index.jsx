@@ -4,7 +4,7 @@ import './Main.scss'
 
 const Main = ( props ) => {
 
-    const { list, onAddProduct } = props;
+    const { onAddProduct } = props;
 
     const [ object,setObject ] = useState({});
 
@@ -17,22 +17,10 @@ const Main = ( props ) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         onAddProduct(object);
-        //console.log(list);
     }
 
   return (
       <div>
-        <header>
-            <h1>My Site</h1>
-        </header>
-        <div>
-            <article>
-                <h2>Product List</h2>
-                <button>Add</button>
-                <ul>
-                    { list.map((x,index) => ( <li key={index}>{ x.name }</li> )) }
-                </ul>
-            </article>
             <section>
                 <h2>Add Product</h2>
                 <form action="" onSubmit = { handleSubmit }>
@@ -55,7 +43,6 @@ const Main = ( props ) => {
                 </form>
             </section>
         </div>
-      </div>
   )
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Main from './components/Main';
+import List from './components/List';
 import { useState } from 'react';
 import './App.scss'
 
@@ -21,9 +22,11 @@ function App() {
 
   return (
       <div>
+        <List
+          list = { list }
+        />
         <Main
           onAddProduct = { handleAddProduct }
-          list = { list }
           />
       </div>
   )
