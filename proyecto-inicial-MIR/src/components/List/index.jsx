@@ -1,30 +1,28 @@
-import React from 'react';
-import Item from '../Item';
+import React from "react";
+import Item from "../Item";
 
-const List = ( props ) => {
-
-    const { list } = props;
-
-    const [{ name }] = list;
+const List = (props) => {
+  const { list } = props;
 
   return (
-      <div>
-        <header>
-            <h1>My Site</h1>
-        </header>
-        <div>
-            <article>
-                <h2>Product List</h2>
-                <button>Add</button>
-                <div>
-                    { list.map((object,index) => { 
-                        return (<Item key={index} name={ object.name }/>)
-                    })}
-                </div>
-            </article>
-        </div>
+    <article className="container__content--list">
+      <div className="cabeza">
+        <h2>Product List</h2>
+        <button>Add</button>
       </div>
-  )
-}
+      <div className="categorias">
+        <span>PRODUCT NAME</span>
+        <span>COLOR</span>
+        <span>CATEGORY</span>
+        <span>PRICE</span>
+      </div>
+      <div>
+        {list.map((object, index) => (
+          <Item key={index} name={object.name} />
+        ))}
+      </div>
+    </article>
+  );
+};
 
 export default List;

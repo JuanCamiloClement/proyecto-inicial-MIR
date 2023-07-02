@@ -1,0 +1,90 @@
+
+body{
+    font-family: 'Outfit', sans-serif;
+    background-color: white;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    .container{
+        
+    .container__header{
+        background-color: #1E2A37;
+        width: 1440px;
+        padding-bottom: 20px;
+        h1{padding-top: 50px;
+            img{
+                margin-left: 30px;
+                margin-bottom: -15px;
+            }
+            margin-left: 5px;
+            font-size: 30px;
+            color: white;
+            margin-top: 5px;
+        }
+        span{
+            color: white;
+            margin-left: 1300px;
+            margin-top: 500px;
+        }
+    }
+    .container__content{
+        display: flex;
+        background-color: white;
+        padding-left: 40px;
+        padding-right: 40px;
+        .container__content--list{
+            flex: 65%;
+            .cabeza{
+                display: flex;
+                button{
+                    margin-top: 20px;
+                    justify-content: center;
+                    width: 50px;
+                    height: 30px;
+                    margin-left: 600px;
+                    background-color: #3C82F6;
+                    padding: 0px;
+                    color: white;
+                }
+            }
+            .categorias{
+                span{
+                    margin-right: 120px;
+                }
+
+            }
+            
+        }
+        .container__content--form{
+            background-color: #F9FAFB;
+            max-width: 400px;
+            flex: 35%;
+            margin-right: 80px;
+            form{
+                box-shadow: 0px 0px 9px -3px rgba(0,0,0,0.63);
+                padding: 10px;
+                box-shadow: 16px;
+                
+            }
+            
+            select, input{
+                width: 350px;
+                height: 25px;
+                padding: 0;
+                border-radius: 10px;
+            }
+            button{
+                justify-content: center;
+                width: 50px;
+                height: 30px;
+                margin-left: 300px;
+                margin-top: 20px;
+                background-color: #3C82F6;
+                padding: 0px;
+                color: white;
+            }
+        }
+    }
+}}

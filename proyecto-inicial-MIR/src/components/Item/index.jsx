@@ -1,12 +1,9 @@
-import React from 'react';
+import React from "react";
 
-const Item = ( props ) => {
+const Item = (props) => {
+  const { name } = props;
 
-    const { name } = props;
-
-  return (
-      <div>{ name }</div>
-  )
-}
+  return <div>{name}</div>;
+};
 
 export default Item;
