@@ -18,7 +18,12 @@ const List = (props) => {
       </div>
       <div>
         {list.map((object, index) => (
-          <Item key={index} name={object.name} />
+          <Item key={index} 
+                name={object.name}
+                color={object.color}
+                category={object.category}
+                price={object.price}
+            />
         ))}
       </div>
     </article>
