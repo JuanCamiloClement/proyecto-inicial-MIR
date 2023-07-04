@@ -3,7 +3,7 @@ import "./Form.scss";
 
 const Form = (props) => {
 
-  const { onAddProduct } = props;
+  const { onAddProduct,objectToEdit } = props;
 
   const [object, setObject] = useState({});
 
@@ -24,7 +24,7 @@ const Form = (props) => {
       <section>
        
         <form action="" onSubmit={handleSubmit} >
-          <h2>Add Product</h2>
+          <h2>{ objectToEdit ? "Edit Product":"Add Product" }</h2>
           <label htmlFor="name">PRODUCT NAME</label>
           <br />
           <input
@@ -32,6 +32,7 @@ const Form = (props) => {
             name="name"
             onChange={handleChange}
             placeholder="Your product name"
+            value={objectToEdit?.name}
           />
           <br />
           <label htmlFor="color">COLOR</label>
@@ -41,11 +42,12 @@ const Form = (props) => {
             name="color"
             onChange={handleChange}
             placeholder="Silver, black, white, etc"
+            value={objectToEdit?.color}
           />
           <br />
           <label htmlFor="category">CATEGORY</label>
           <br />
-          <select name="category" onChange={handleChange}>
+          <select name="category" onChange={handleChange} value={objectToEdit?.category}>
             <option value="category"></option>
             <option value="music">Music</option>
             <option value="home">Home</option>
@@ -61,9 +63,10 @@ const Form = (props) => {
             name="price"
             onChange={handleChange}
             placeholder="$0000,00"
+            value={objectToEdit?.price}
           />
           <br />
-          <button type="submit">Add</button>
+          {objectToEdit ? <div><button>Update</button><button>Cancel</button></div> : <button type="submit">Add</button>}
         </form>
 
       </section>

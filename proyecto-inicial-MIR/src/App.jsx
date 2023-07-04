@@ -11,11 +11,16 @@ function App() {
 
   const [show, setShow] = useState(false);
 
+  const [selectedObject, setSelectedObject] = useState();
+
+
   const handleAddProduct = (object) => {
     setList([object, ...list]);
+    setShow(false);
   };
 
-  const handleClick = () => {
+  const handleClick = (objectToEdit) => {
+    setSelectedObject(objectToEdit);
     setShow(true);
   }
 
@@ -24,7 +29,7 @@ function App() {
       <Header/>
       <div className="container__content">
         <List list={list} onClick={handleClick}/>
-        {show && <Form onAddProduct={handleAddProduct} />}
+        {show && <Form onAddProduct={handleAddProduct} objectToEdit={selectedObject}/>}
       </div>
     </div>
   );

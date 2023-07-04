@@ -10,7 +10,7 @@ const List = (props) => {
     <article className="container__content--list">
       <div className="cabeza">
         <h2>Product List</h2>
-        <button className="buttonAdd" onClick={ onClick }>Add</button>
+        <button className="buttonAdd" onClick={ () => onClick() }>Add</button>
       </div>
       <div className="categorias">
         <span>PRODUCT NAME</span>
@@ -20,12 +20,13 @@ const List = (props) => {
       </div>
       <div>
         {list.map((object, index) => (
-          <Item key={index} 
+          <Item key={index}
+                id={index + 1}
                 name={object.name}
                 color={object.color}
                 category={object.category}
                 price={object.price}
-                onClick={onClick}
+                onClick={()=>onClick(object)}
             />
         ))}
       </div>
