@@ -1,9 +1,7 @@
 import React from "react";
 
 const Item = (props) => {
-  const { name, color, category, price, onShowEditForm } = props;
-
-  const handleClick = () => onShowEditForm();
+  const { name, color, category, price, onClick } = props;
 
   return (
           <div className="item-spans">
@@ -11,7 +9,7 @@ const Item = (props) => {
             <span>{color}</span>
             <span>{category}</span>
             <span>{price}</span>
-            <button className="button" onClick={handleClick}>Edit</button>
+            <button className="button" onClick={onClick}>Edit</button>
             <button className="button">Delete</button>
           </div>
   );

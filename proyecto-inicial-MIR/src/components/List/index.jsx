@@ -2,13 +2,15 @@ import React from "react";
 import Item from "../Item";
 
 const List = (props) => {
-  const { list } = props;
+  const { list, onClick } = props;
+
+
 
   return (
     <article className="container__content--list">
       <div className="cabeza">
         <h2>Product List</h2>
-        <button>Add</button>
+        <button className="buttonAdd" onClick={ onClick }>Add</button>
       </div>
       <div className="categorias">
         <span>PRODUCT NAME</span>
@@ -23,6 +25,7 @@ const List = (props) => {
                 color={object.color}
                 category={object.category}
                 price={object.price}
+                onClick={onClick}
             />
         ))}
       </div>

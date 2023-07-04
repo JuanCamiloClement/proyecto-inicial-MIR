@@ -1,29 +1,30 @@
 import React, { useState } from "react";
-import Main from "./components/Main";
+import Form from "./components/Form";
 import List from "./components/List";
 import Header from "./components/Header";
 import "./App.scss";
-import "./components/Main/Main.scss";
+import "./components/Form/Form.scss";
 
 function App() {
+
   const [list, setList] = useState([]);
 
-  const [showEditForm,setShowEditForm] = useState(false);
+  const [show, setShow] = useState(false);
 
   const handleAddProduct = (object) => {
     setList([object, ...list]);
   };
 
-  const handleShowEditForm = () => {
-    setShowEditForm(!showEditForm);
+  const handleClick = () => {
+    setShow(true);
   }
 
   return (
     <div className="container">
       <Header/>
       <div className="container__content">
-        <List list={list} onShowEditForm={handleShowEditForm}/>
-        <Main onAddProduct={handleAddProduct} showEditForm={showEditForm}/>
+        <List list={list} onClick={handleClick}/>
+        {show && <Form onAddProduct={handleAddProduct} />}
       </div>
     </div>
   );
