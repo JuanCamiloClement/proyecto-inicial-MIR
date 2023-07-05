@@ -2,7 +2,7 @@ import React from "react";
 import Item from "../Item";
 
 const List = (props) => {
-  const { list, onClick } = props;
+  const { list, onClick, onDelete} = props;
 
   return (
     <article className="container__content--list">
@@ -25,6 +25,7 @@ const List = (props) => {
                 category={object.category}
                 price={object.price}
                 onClick={()=>onClick(object)}
+                onDelete={onDelete}
             />
         ))}
       </div>

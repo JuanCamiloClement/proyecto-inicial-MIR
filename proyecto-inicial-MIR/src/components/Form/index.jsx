@@ -3,7 +3,7 @@ import "./Form.scss";
 
 const Form = (props) => {
 
-  const { onAddProduct, objectToEdit, onUpdateProduct } = props;
+  const { onAddProduct, objectToEdit, onUpdateProduct, onHandleHide } = props;
 
   const [object, setObject] = useState({});
 
@@ -73,8 +73,8 @@ const Form = (props) => {
             placeholder="$0000,00"
             value={editableObject?.price}
           />
-          <br />
-          {editableObject ? <div><button type="submit">Update</button><button>Cancel</button></div> : <button type="submit">Add</button>}
+          {editableObject ? <div><button type="submit">Update</button></div> : <button type="submit">Add</button>}
+          <button onClick={onHandleHide}>Cancel</button>
         </form>
 
       </section>

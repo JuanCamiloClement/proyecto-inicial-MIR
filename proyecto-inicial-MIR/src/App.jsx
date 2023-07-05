@@ -30,12 +30,24 @@ const App = () => {
     setShow(false);
   }
 
+  const handleHide = () => setShow(false);
+
+  const handleDelete = () => {
+    const filteredList = list.filter((element) => element !== selectedObject);
+    setList([filteredList]);
+  }
+
   return (
     <div className="container">
       <Header/>
       <div className="container__content">
-        <List list={list} onClick={handleClick}/>
-        {show && <Form onAddProduct={handleAddProduct} onUpdateProduct={handleUpdateProduct} objectToEdit={selectedObject}/>}
+        <List list={list} onClick={handleClick} onDelete={handleDelete}/>
+        {show && <Form 
+                  onAddProduct={handleAddProduct} 
+                  onUpdateProduct={handleUpdateProduct} 
+                  objectToEdit={selectedObject}
+                  onHandleHide={handleHide}
+        />}
       </div>
     </div>
   );
