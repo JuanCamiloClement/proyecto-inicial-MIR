@@ -4,8 +4,6 @@ import Item from "../Item";
 const List = (props) => {
   const { list, onClick } = props;
 
-
-
   return (
     <article className="container__content--list">
       <div className="cabeza">

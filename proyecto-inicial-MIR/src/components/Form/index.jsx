@@ -3,14 +3,17 @@ import "./Form.scss";
 
 const Form = (props) => {
 
-  const { onAddProduct,objectToEdit } = props;
+  const { onAddProduct, objectToEdit, onUpdateProduct } = props;
 
   const [object, setObject] = useState({});
+
+  const [editableObject,setEditableObject] = useState(objectToEdit);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     const newObject = { ...object, [name]: value };
-    setObject(newObject);
+    const newEditedObject = { ...editableObject, [name]: value };
+    {editableObject ? setEditableObject(newEditedObject) : setObject(newObject)}
   };
 
   const handleSubmit = (event) => {
@@ -19,12 +22,17 @@ const Form = (props) => {
     setObject({});
   };
 
+  const handleUpdate = (event) => {
+    event.preventDefault();
+    onUpdateProduct(editableObject);
+  }
+
   return (
     <div className="container__content--form">
       <section>
        
-        <form action="" onSubmit={handleSubmit} >
-          <h2>{ objectToEdit ? "Edit Product":"Add Product" }</h2>
+        <form action="" onSubmit={objectToEdit ? handleUpdate : handleSubmit} >
+          <h2>{ editableObject ? "Edit Product":"Add Product" }</h2>
           <label htmlFor="name">PRODUCT NAME</label>
           <br />
           <input
@@ -32,7 +40,7 @@ const Form = (props) => {
             name="name"
             onChange={handleChange}
             placeholder="Your product name"
-            value={objectToEdit?.name}
+            value={editableObject?.name}
           />
           <br />
           <label htmlFor="color">COLOR</label>
@@ -42,12 +50,12 @@ const Form = (props) => {
             name="color"
             onChange={handleChange}
             placeholder="Silver, black, white, etc"
-            value={objectToEdit?.color}
+            value={editableObject?.color}
           />
           <br />
           <label htmlFor="category">CATEGORY</label>
           <br />
-          <select name="category" onChange={handleChange} value={objectToEdit?.category}>
+          <select name="category" onChange={handleChange} value={editableObject?.category}>
             <option value="category"></option>
             <option value="music">Music</option>
             <option value="home">Home</option>
@@ -63,10 +71,10 @@ const Form = (props) => {
             name="price"
             onChange={handleChange}
             placeholder="$0000,00"
-            value={objectToEdit?.price}
+            value={editableObject?.price}
           />
           <br />
-          {objectToEdit ? <div><button>Update</button><button>Cancel</button></div> : <button type="submit">Add</button>}
+          {editableObject ? <div><button type="submit">Update</button><button>Cancel</button></div> : <button type="submit">Add</button>}
         </form>
 
       </section>
