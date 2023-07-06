@@ -10,25 +10,30 @@ const List = (props) => {
         <h2>Product List</h2>
         <button className="buttonAdd" onClick={ () => onClick() }>Add</button>
       </div>
-      <div className="categorias">
-        <span>PRODUCT NAME</span>
-        <span>COLOR</span>
-        <span>CATEGORY</span>
-        <span>PRICE</span>
-      </div>
-      <div>
-        {list.map((object, index) => (
-          <Item key={index}
-                id={index + 1}
-                name={object.name}
-                color={object.color}
-                category={object.category}
-                price={object.price}
-                onClick={()=>onClick(object)}
-                onDelete={onDelete}
-            />
-        ))}
-      </div>
+
+      <table>
+        <thead className="categorias">
+          <tr>
+            <th>PRODUCT NAME</th>
+            <th>COLOR</th>
+            <th>CATEGORY</th>
+            <th>PRICE</th>
+          </tr>
+        </thead>
+        <tbody>
+          {list.map((object, index) => (
+            <Item key={index}
+                  id={index + 1}
+                  name={object.name}
+                  color={object.color}
+                  category={object.category}
+                  price={object.price}
+                  onClick={() => onClick(object)}
+                  onDelete={() => onDelete(object)}
+              />
+          ))}
+        </tbody>
+      </table>
     </article>
   );
 };

@@ -32,9 +32,9 @@ const App = () => {
 
   const handleHide = () => setShow(false);
 
-  const handleDelete = () => {
-    const filteredList = list.filter((element) => element !== selectedObject);
-    setList([filteredList]);
+  const handleDelete = (objectToDelete) => {
+    const filteredList = list.filter((element) => element !== objectToDelete);
+    setList(filteredList);
   }
 
   return (
