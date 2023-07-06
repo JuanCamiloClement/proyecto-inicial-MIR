@@ -56,12 +56,12 @@ const Form = (props) => {
           <label htmlFor="category">CATEGORY</label>
           <br />
           <select name="category" onChange={handleChange} value={editableObject?.category}>
-            <option value="category"></option>
-            <option value="music">Music</option>
-            <option value="home">Home</option>
-            <option value="clothing">Clothing</option>
-            <option value="baby">Baby</option>
-            <option value="books">Books</option>
+            <option value="Category"></option>
+            <option value="Music">Music</option>
+            <option value="Home">Home</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Baby">Baby</option>
+            <option value="Books">Books</option>
           </select>
           <br />
           <label htmlFor="price">PRICE</label>

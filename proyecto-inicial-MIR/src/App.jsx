@@ -28,6 +28,7 @@ const App = () => {
     const filteredList = list.filter((element) => element !== selectedObject);
     setList([...filteredList,editedProduct]);
     setShow(false);
+    setSelectedObject(false);
   }
 
   const handleHide = () => setShow(false);
@@ -41,7 +42,12 @@ const App = () => {
     <div className="container">
       <Header/>
       <div className="container__content">
-        <List list={list} onClick={handleClick} onDelete={handleDelete}/>
+        <List 
+          list={list} 
+          onClick={handleClick} 
+          onDelete={handleDelete}
+          //onClickAddButton={handleClickAddButton}
+        />
         {show && <Form 
                   onAddProduct={handleAddProduct} 
                   onUpdateProduct={handleUpdateProduct} 

@@ -2,13 +2,13 @@ import React from "react";
 import Item from "../Item";
 
 const List = (props) => {
-  const { list, onClick, onDelete} = props;
+  const { list, onClick, onDelete } = props;
 
   return (
     <article className="container__content--list">
       <div className="cabeza">
         <h2>Product List</h2>
-        <button className="buttonAdd" onClick={ () => onClick() }>Add</button>
+        <button className="buttonAdd" onClick={() => onClick()}>Add</button>
       </div>
 
       <table>
