@@ -2,7 +2,11 @@ import React from "react";
 import Item from "../Item";
 
 const List = (props) => {
-  const { list, onClick, onDelete } = props;
+  const { list, onClick, onDelete, error } = props;
+
+  if(error) {
+    return error;
+  }
 
   return (
     <article className="container__content--list">

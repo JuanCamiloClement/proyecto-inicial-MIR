@@ -4,10 +4,9 @@ import "./Form.scss";
 const Form = (props) => {
 
   const { onAddProduct, objectToEdit, onUpdateProduct, onHandleHide } = props;
-
   const [object, setObject] = useState({});
-
   const [editableObject, setEditableObject] = useState(objectToEdit);
+  const [errorForm,setErrorForm] = useState(null)
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -16,15 +15,29 @@ const Form = (props) => {
     { editableObject ? setEditableObject(newEditedObject) : setObject(newObject) }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    onAddProduct(object);
+    const configFetch = { method: 'POST', body: JSON.stringify(object), headers: { 'Content-Type': 'application/json'} }
+
+    try {
+      const response = await fetch('http://localhost:3000/products',configFetch);
+      const product = await response.json();
+      console.log(product);
+      onAddProduct(product.data);
+    } catch(error) {
+      setErrorForm(`Ups! No se pudo aregar el producto. Error: ${error}`);
+    }
+
     setObject({});
   };
 
   const handleUpdate = (event) => {
     event.preventDefault();
     onUpdateProduct(editableObject);
+  }
+
+  if(errorForm) {
+    return errorForm;
   }
 
   return (

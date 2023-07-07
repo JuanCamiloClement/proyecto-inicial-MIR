@@ -11,12 +11,8 @@ const Item = (props) => {
       <td data-cell="category">{category}</td>
       <td data-cell="price">{price}</td>
       <td data-cell="button">
-        <tr className="buttonED">
-          <button className="buttonEditDelete" onClick={onClick}>Edit</button>
-        </tr>
-        <tr className="buttonED">
-          <button className="buttonEditDelete" onClick={onDelete}>Delete</button>
-        </tr>
+        <button className="buttonED buttonEditDelete" onClick={onClick}>Edit</button>
+        <button className="buttonED buttonEditDelete" onClick={onDelete}>Delete</button>
       </td>
     </tr>
   );

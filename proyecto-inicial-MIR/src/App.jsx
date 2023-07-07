@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "./components/Form";
 import List from "./components/List";
 import Header from "./components/Header";
@@ -8,10 +8,21 @@ import "./components/Form/Form.scss";
 const App = () => {
 
   const [list, setList] = useState([]);
-
   const [show, setShow] = useState(false);
-
   const [selectedObject, setSelectedObject] = useState();
+  const [error,setError] = useState(null);
+
+  useEffect(() => {
+    (async function fetchData() {
+      try {
+        const response = await fetch('http://localhost:3000/products');
+        const products = await response.json();
+        setList(products.data);
+      } catch(error) {
+        setError(`Ups! No se pudieron cargar los productos. Error: ${error}`);
+      }
+    })();
+  },[]);
 
   const handleAddProduct = (object) => {
     setList([object, ...list]);
@@ -46,6 +57,7 @@ const App = () => {
           list={list} 
           onClick={handleClick} 
           onDelete={handleDelete}
+          error={error}
           //onClickAddButton={handleClickAddButton}
         />
         {show && <Form 
