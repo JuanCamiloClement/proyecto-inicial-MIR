@@ -4,14 +4,14 @@ import Item from "../Item";
 const List = (props) => {
   const { list, onClick, onDelete, error } = props;
 
-  if(error) {
+  if (error) {
     return error;
   }
 
   return (
     <article className="container__content--list">
       <div className="cabeza">
-        <h2>Product List</h2>
+        <h2 className="titulos">Product List</h2>
         <button className="botonesPrincipales" id="buttonAdd" onClick={() => onClick()}>Add</button>
       </div>
 
@@ -22,13 +22,14 @@ const List = (props) => {
             <th>COLOR</th>
             <th>CATEGORY</th>
             <th>PRICE</th>
-            <th></th>
+            <th>   </th>
+
           </tr>
         </thead>
         <tbody>
           {list.map((object, index) => {
-            return (       
-              <Item 
+            return (
+              <Item
                 key={object.id}
                 id={object.id}
                 name={object.name}
@@ -38,7 +39,8 @@ const List = (props) => {
                 onClick={() => onClick(object)}
                 onDelete={() => onDelete(object)}
               />
-            )}          
+            )
+          }
           )}
         </tbody>
       </table>

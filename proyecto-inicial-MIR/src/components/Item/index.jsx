@@ -6,13 +6,13 @@ const Item = (props) => {
 
   return (
     <tr>
-      <td data-cell="name">{name}</td>
-      <td data-cell="color">{color}</td>
-      <td data-cell="category">{category}</td>
-      <td data-cell="price">{price}</td>
-      <td data-cell="button">
-        <button className="buttonED buttonEditDelete" onClick={onClick}>Edit</button>
-        <button className="buttonED buttonEditDelete" onClick={onDelete}>Delete</button>
+      <td>{name}</td>
+      <td>{color}</td>
+      <td>{category}</td>
+      <td>{price}</td>
+      <td className="buttonED">
+        <button className="buttonEditDelete" onClick={onClick}>Edit</button>
+        <button className="buttonEditDelete" onClick={onDelete}>Delete</button>
       </td>
     </tr>
   );
