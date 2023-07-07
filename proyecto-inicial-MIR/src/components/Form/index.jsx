@@ -7,13 +7,13 @@ const Form = (props) => {
 
   const [object, setObject] = useState({});
 
-  const [editableObject,setEditableObject] = useState(objectToEdit);
+  const [editableObject, setEditableObject] = useState(objectToEdit);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     const newObject = { ...object, [name]: value };
     const newEditedObject = { ...editableObject, [name]: value };
-    {editableObject ? setEditableObject(newEditedObject) : setObject(newObject)}
+    { editableObject ? setEditableObject(newEditedObject) : setObject(newObject) }
   };
 
   const handleSubmit = (event) => {
@@ -30,9 +30,9 @@ const Form = (props) => {
   return (
     <div className="container__content--form">
       <section>
-       
+
         <form action="" onSubmit={objectToEdit ? handleUpdate : handleSubmit} >
-          <h2>{ editableObject ? "Edit Product":"Add Product" }</h2>
+          <h2>{editableObject ? "Edit Product" : "Add Product"}</h2>
           <label htmlFor="name">PRODUCT NAME</label>
           <br />
           <input
@@ -73,8 +73,8 @@ const Form = (props) => {
             placeholder="$0000,00"
             value={editableObject?.price}
           />
-          {editableObject ? <div><button type="submit">Update</button></div> : <button type="submit">Add</button>}
-          <button onClick={onHandleHide}>Cancel</button>
+          {editableObject ? <div><button className="botonesPrincipales" type="submit">Update</button></div> : <button className="botonesPrincipales" type="submit">Add</button>}
+          <button className="botonesPrincipales" onClick={onHandleHide}>Cancel</button>
         </form>
 
       </section>

@@ -1,89 +1,125 @@
-
-body{
+body {
     font-family: 'Outfit', sans-serif;
+    font-size: 16px;
     background-color: white;
     display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 0;
     min-width: 100vw;
     min-height: 100vh;
-    .container{
-        
-    .container__header{
-        background-color: #1E2A37;
-        width: 1440px;
-        padding-bottom: 20px;
-        h1{padding-top: 50px;
-            img{
-                margin-left: 30px;
-                margin-bottom: -15px;
-            }
-            margin-left: 5px;
-            font-size: 30px;
+
+    .container {
+
+        .container__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1E2A37;
             color: white;
-            margin-top: 5px;
-        }
-        span{
-            color: white;
-            margin-left: 1300px;
-            margin-top: 500px;
-        }
-    }
-    .container__content{
-        display: flex;
-        background-color: white;
-        padding-left: 40px;
-        padding-right: 40px;
-        .container__content--list{
-            flex: 65%;
-            .cabeza{
+            width: 100%;
+            padding: 0.5rem;
+
+            div {
                 display: flex;
-                .buttonAdd{
-                    margin-top: 20px;
+                align-items: center;
+                gap: 0.5rem;
+
+                h1 {
+                    margin: 0;
+                    font-size: 1.2rem;
+                }
+            }
+
+        }
+
+        .container__content {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            padding-left: 1rem;
+            padding-right: 1rem;
+
+            .container__content--list {
+
+                width: 100%;
+
+                .cabeza {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                    font-size: 1.2rem;
+                }
+
+                .tabla {
+                    table-layout: fixed;
+                    width: 100%;
+                    border-collapse: collapse;
+
+                    tr {
+                        text-align: left;
+                    }
+
+                    th,
+                    td {
+                        font-size: 0.4rem;
+                    }
+
+                    th {
+                        background-color: #eeeef0;
+                    }
+
+                    .buttonED {
+                        text-align: right;
+                    }
+
+                    .buttonEditDelete {
+                        border: 0;
+                        padding: 0;
+                        font-size: 0.4rem;
+                        color: blue;
+                    }
+
+
+
+
+                }
+
+
+            }
+
+            .container__content--form {
+                background-color: #afb4ba;
+                max-width: 400px;
+                flex: 35%;
+                margin-right: 80px;
+
+                form {
+                    box-shadow: 0px 0px 9px -3px rgba(0, 0, 0, 0.63);
+                    padding: 10px;
+                    box-shadow: 16px;
+                }
+
+                select,
+                input {
+                    width: 350px;
+                    height: 25px;
+                    padding-left: 5px;
+                    border-radius: 10px;
+                }
+
+                .buttobotonesPrincipalesn {
                     justify-content: center;
                     width: 50px;
                     height: 30px;
-                    margin-left: 600px;
+                    margin-left: 300px;
+                    margin-top: 20px;
                     background-color: #3C82F6;
                     padding: 0px;
                     color: white;
                 }
             }
-            .categorias{
-                span{
-                    margin-right: 120px;
-                }
-
-            }
-            
-        }
-        .container__content--form{
-            background-color: #F9FAFB;
-            max-width: 400px;
-            flex: 35%;
-            margin-right: 80px;
-            form{
-                box-shadow: 0px 0px 9px -3px rgba(0,0,0,0.63);
-                padding: 10px;
-                box-shadow: 16px;
-            }
-            
-            select, input{
-                width: 350px;
-                height: 25px;
-                padding-left: 5px;
-                border-radius: 10px;
-            }
-            button{
-                justify-content: center;
-                width: 50px;
-                height: 30px;
-                margin-left: 300px;
-                margin-top: 20px;
-                background-color: #3C82F6;
-                padding: 0px;
-                color: white;
-            }
         }
     }
-}}
+}
