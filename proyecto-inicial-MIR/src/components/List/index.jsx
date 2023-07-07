@@ -26,17 +26,20 @@ const List = (props) => {
           </tr>
         </thead>
         <tbody>
-          {list.map((object, index) => (
-            <Item key={index}
-              id={index + 1}
-              name={object.name}
-              color={object.color}
-              category={object.category}
-              price={object.price}
-              onClick={() => onClick(object)}
-              onDelete={() => onDelete(object)}
-            />
-          ))}
+          {list.map((object, index) => {
+            return (       
+              <Item 
+                key={object.id}
+                id={object.id}
+                name={object.name}
+                color={object.color}
+                category={object.category}
+                price={object.price}
+                onClick={() => onClick(object)}
+                onDelete={() => onDelete(object)}
+              />
+            )}          
+          )}
         </tbody>
       </table>
     </article>

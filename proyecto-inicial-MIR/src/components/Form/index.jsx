@@ -17,23 +17,34 @@ const Form = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const configFetch = { method: 'POST', body: JSON.stringify(object), headers: { 'Content-Type': 'application/json'} }
+    const configFetch = { 
+      method: 'POST', 
+      body: JSON.stringify(object), 
+      headers: { 'Content-Type': 'application/json'} 
+    }
 
     try {
       const response = await fetch('http://localhost:3000/products',configFetch);
       const product = await response.json();
-      console.log(product);
       onAddProduct(product.data);
     } catch(error) {
-      setErrorForm(`Ups! No se pudo aregar el producto. Error: ${error}`);
+      setErrorForm(`Ups! No se pudo agregar el producto. Error: ${error}`);
     }
 
     setObject({});
   };
 
-  const handleUpdate = (event) => {
+  const handleUpdate = async (event) => {
     event.preventDefault();
-    onUpdateProduct(editableObject);
+    const configFetch = { method: 'PUT', body: JSON.stringify(editableObject), headers: { 'Content-Type': 'application/json'} }
+
+    try {
+      const response = await fetch(`http://localhost:3000/products/${editableObject.id}`,configFetch);
+      const product = await response.json();
+      onUpdateProduct(product.data);
+    } catch(error) {
+      setErrorForm(`Ups! No se pudo editar el producto. Error: ${error}`);
+    }
   }
 
   if(errorForm) {

@@ -44,9 +44,16 @@ const App = () => {
 
   const handleHide = () => setShow(false);
 
-  const handleDelete = (objectToDelete) => {
-    const filteredList = list.filter((element) => element !== objectToDelete);
-    setList(filteredList);
+  const handleDelete = async (objectToDelete) => {
+    const configFetch = { method: 'DELETE' }
+
+    try {
+      await fetch(`http://localhost:3000/products/${objectToDelete.id}`,configFetch);
+      const filteredList = list.filter((element) => element !== objectToDelete);
+      setList(filteredList);
+    } catch(error) {
+      setError(`Ups! No se pudo eliminar el producto. Error: ${error}`);
+    }
   }
 
   return (
