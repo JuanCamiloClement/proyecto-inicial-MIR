@@ -24,7 +24,7 @@ const Form = (props) => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/products', configFetch);
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/products`, configFetch);
       const product = await response.json();
       onAddProduct(product.data);
     } catch (error) {
@@ -39,7 +39,7 @@ const Form = (props) => {
     const configFetch = { method: 'PUT', body: JSON.stringify(editableObject), headers: { 'Content-Type': 'application/json' } }
 
     try {
-      const response = await fetch(`http://localhost:3000/products/${editableObject.id}`, configFetch);
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/products/${editableObject.id}`, configFetch);
       const product = await response.json();
       onUpdateProduct(product.data);
     } catch (error) {

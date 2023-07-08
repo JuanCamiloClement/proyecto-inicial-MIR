@@ -14,7 +14,7 @@ const App = () => {
   useEffect(() => {
     (async function fetchData() {
       try {
-        const response = await fetch('http://localhost:3000/products');
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/products`);
         const products = await response.json();
         setList(products.data);
       } catch (error) {
@@ -24,7 +24,7 @@ const App = () => {
   }, []);
 
   const handleAddProduct = (object) => {
-    setList([object, ...list]);
+    setList([...list,object]);
     setShow(false);
   };
 
@@ -47,7 +47,7 @@ const App = () => {
     const configFetch = { method: 'DELETE' }
 
     try {
-      await fetch(`http://localhost:3000/products/${objectToDelete.id}`, configFetch);
+      await fetch(`${import.meta.env.VITE_API_BASE_URL}/products/${objectToDelete.id}`, configFetch);
       const filteredList = list.filter((element) => element !== objectToDelete);
       setList(filteredList);
     } catch (error) {
@@ -55,7 +55,7 @@ const App = () => {
     }
   }
 
-  
+
   return (
     <div className="app">
       <Header />
@@ -65,7 +65,6 @@ const App = () => {
           onClick={handleClick}
           onDelete={handleDelete}
           error={error}
-        //onClickAddButton={handleClickAddButton}
         />
         {show && <Form
           onAddProduct={handleAddProduct}
