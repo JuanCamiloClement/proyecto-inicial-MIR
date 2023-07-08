@@ -1,5 +1,6 @@
 import React from "react";
 import Item from "../Item";
+import "./List.scss";
 
 const List = (props) => {
   const { list, onClick, onDelete, error } = props;
@@ -16,6 +17,13 @@ const List = (props) => {
       </div>
 
       <table className="tabla">
+        <colgroup>
+          <col style={{ width: "30%" }} />
+          <col style={{ width: "20%" }} />
+          <col style={{ width: "20%" }} />
+          <col style={{ width: "20%" }} />
+          <col style={{ width: "10%" }} />
+        </colgroup>
         <thead className="categorias">
           <tr>
             <th>PRODUCT NAME</th>

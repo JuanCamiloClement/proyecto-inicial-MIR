@@ -52,7 +52,7 @@ const Form = (props) => {
   }
 
   return (
-    <div >
+    <div className="form_container">
       <section>
 
         <form action="" onSubmit={objectToEdit ? handleUpdate : handleSubmit} >

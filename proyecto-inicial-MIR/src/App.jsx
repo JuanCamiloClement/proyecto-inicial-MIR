@@ -3,14 +3,13 @@ import Form from "./components/Form";
 import List from "./components/List";
 import Header from "./components/Header";
 import "./App.scss";
-import "./components/Form/Form.scss";
 
 const App = () => {
 
   const [list, setList] = useState([]);
   const [show, setShow] = useState(false);
   const [selectedObject, setSelectedObject] = useState();
-  const [error,setError] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     (async function fetchData() {
@@ -18,11 +17,11 @@ const App = () => {
         const response = await fetch('http://localhost:3000/products');
         const products = await response.json();
         setList(products.data);
-      } catch(error) {
+      } catch (error) {
         setError(`Ups! No se pudieron cargar los productos. Error: ${error}`);
       }
     })();
-  },[]);
+  }, []);
 
   const handleAddProduct = (object) => {
     setList([object, ...list]);
@@ -37,7 +36,7 @@ const App = () => {
   const handleUpdateProduct = (editedProduct) => {
     setSelectedObject(editedProduct);
     const filteredList = list.filter((element) => element !== selectedObject);
-    setList([...filteredList,editedProduct]);
+    setList([...filteredList, editedProduct]);
     setShow(false);
     setSelectedObject(false);
   }
@@ -48,30 +47,30 @@ const App = () => {
     const configFetch = { method: 'DELETE' }
 
     try {
-      await fetch(`http://localhost:3000/products/${objectToDelete.id}`,configFetch);
+      await fetch(`http://localhost:3000/products/${objectToDelete.id}`, configFetch);
       const filteredList = list.filter((element) => element !== objectToDelete);
       setList(filteredList);
-    } catch(error) {
+    } catch (error) {
       setError(`Ups! No se pudo eliminar el producto. Error: ${error}`);
     }
   }
 
   return (
-    <div className="container">
-      <Header/>
+    <div className="app">
+      <Header />
       <div className="container__content">
-        <List 
-          list={list} 
-          onClick={handleClick} 
+        <List
+          list={list}
+          onClick={handleClick}
           onDelete={handleDelete}
           error={error}
-          //onClickAddButton={handleClickAddButton}
+        //onClickAddButton={handleClickAddButton}
         />
-        {show && <Form 
-                  onAddProduct={handleAddProduct} 
-                  onUpdateProduct={handleUpdateProduct} 
-                  objectToEdit={selectedObject}
-                  onHandleHide={handleHide}
+        {show && <Form
+          onAddProduct={handleAddProduct}
+          onUpdateProduct={handleUpdateProduct}
+          objectToEdit={selectedObject}
+          onHandleHide={handleHide}
         />}
       </div>
     </div>
